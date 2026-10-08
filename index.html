@@ -2,26 +2,31 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Altın İz | Fiziksel Altın Portföy Takibi</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
-    content="Altın İz, fiziksel altın varlıklarını, maliyetlerini ve portföy değerini tek yerde takip etmeyi amaçlayan iOS ve Android mobil uygulamasıdır."
+    content="Altın İz, fiziksel altın varlıklarını, maliyetlerini ve portföy değerini takip etmeyi amaçlayan iOS ve Android mobil uygulamasıdır."
   >
+
+  <title>Altın İz | Fiziksel Altın Portföy Takibi</title>
 
   <style>
     :root {
-      --background: #0f172a;
+      --background: #0b1120;
+      --background-light: #0f172a;
       --surface: #172033;
       --surface-light: #1e293b;
       --gold: #f5c451;
       --gold-dark: #d9a62e;
       --text: #f8fafc;
       --muted: #cbd5e1;
-      --border: rgba(255, 255, 255, 0.10);
-      --success: #86efac;
+      --border: rgba(255, 255, 255, 0.1);
+      --green: #86efac;
     }
 
     * {
@@ -37,8 +42,16 @@
     body {
       min-height: 100vh;
       background:
-        radial-gradient(circle at top right, rgba(245, 196, 81, 0.16), transparent 32%),
-        linear-gradient(180deg, var(--background), #0b1120);
+        radial-gradient(
+          circle at top right,
+          rgba(245, 196, 81, 0.16),
+          transparent 32%
+        ),
+        linear-gradient(
+          180deg,
+          var(--background-light),
+          var(--background)
+        );
       color: var(--text);
       font-family:
         Inter,
@@ -76,6 +89,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      color: var(--text);
       font-size: 22px;
       font-weight: 800;
       text-decoration: none;
@@ -83,23 +97,27 @@
 
     .brand-icon {
       display: grid;
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       place-items: center;
-      border-radius: 13px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 14px;
+      background: linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold-dark)
+      );
       color: #111827;
       font-weight: 900;
-      box-shadow: 0 10px 30px rgba(245, 196, 81, 0.20);
+      box-shadow: 0 10px 30px rgba(245, 196, 81, 0.2);
     }
 
-    .header-link {
+    .header-email {
       color: var(--muted);
       font-size: 15px;
       text-decoration: none;
     }
 
-    .header-link:hover {
+    .header-email:hover {
       color: var(--gold);
     }
 
@@ -117,7 +135,7 @@
       border: 1px solid rgba(134, 239, 172, 0.25);
       border-radius: 999px;
       background: rgba(134, 239, 172, 0.08);
-      color: var(--success);
+      color: var(--green);
       font-size: 14px;
       font-weight: 700;
     }
@@ -126,8 +144,8 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--success);
-      box-shadow: 0 0 14px var(--success);
+      background: var(--green);
+      box-shadow: 0 0 14px var(--green);
     }
 
     h1 {
@@ -168,8 +186,7 @@
       text-decoration: none;
       transition:
         transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
+        box-shadow 0.2s ease;
     }
 
     .button:hover {
@@ -177,8 +194,13 @@
     }
 
     .button-primary {
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      background: linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold-dark)
+      );
       color: #111827;
+      box-shadow: 0 12px 30px rgba(245, 196, 81, 0.16);
     }
 
     .button-secondary {
@@ -192,7 +214,7 @@
     }
 
     .section-heading {
-      max-width: 720px;
+      max-width: 760px;
       margin-bottom: 36px;
     }
 
@@ -245,6 +267,7 @@
       background: rgba(245, 196, 81, 0.13);
       color: var(--gold);
       font-size: 23px;
+      font-weight: 800;
     }
 
     .feature-card h3 {
@@ -257,10 +280,6 @@
       font-size: 15px;
     }
 
-    .ai-section {
-      padding: 72px 0;
-    }
-
     .ai-panel {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -270,7 +289,11 @@
       border: 1px solid rgba(245, 196, 81, 0.22);
       border-radius: 28px;
       background:
-        radial-gradient(circle at top right, rgba(245, 196, 81, 0.12), transparent 36%),
+        radial-gradient(
+          circle at top right,
+          rgba(245, 196, 81, 0.12),
+          transparent 36%
+        ),
         var(--surface);
     }
 
@@ -288,6 +311,7 @@
     }
 
     .check {
+      flex-shrink: 0;
       color: var(--gold);
       font-weight: 900;
     }
@@ -296,7 +320,7 @@
       padding: 24px;
       border: 1px solid var(--border);
       border-radius: 20px;
-      background: rgba(15, 23, 42, 0.70);
+      background: rgba(15, 23, 42, 0.7);
     }
 
     .example-label {
@@ -304,6 +328,7 @@
       color: var(--muted);
       font-size: 13px;
       font-weight: 800;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
     }
 
@@ -321,4 +346,399 @@
       margin-top: 18px;
     }
 
-    .result-item 
+    .result-item {
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .result-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .platform-section {
+      padding: 72px 0;
+      text-align: center;
+    }
+
+    .platform-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .platform {
+      padding: 12px 18px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .disclaimer-section {
+      padding: 0 0 20px;
+    }
+
+    .disclaimer {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .footer {
+      margin-top: 72px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-content a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    @media (max-width: 850px) {
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .ai-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .header-email {
+        display: none;
+      }
+
+      .hero {
+        padding: 68px 0 54px;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ai-panel {
+        padding: 25px;
+      }
+
+      .example-result {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      #top
+        <span class="brand-icon">Aİ</span>
+        <span>Altın İz</span>
+      </a>
+
+      <a
+        class="header-email"
+        href="mailto:adem@altiniz.app"
+      >
+        adem@altiniz.app
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Erken geliştirme aşamasında
+        </div>
+
+        <h1>
+          Fiziksel altın portföyünüzü
+          <span class="gold-text">tek yerde izleyin.</span>
+        </h1>
+
+        <p class="hero-description">
+          Altın İz; gram, çeyrek, yarım, tam ve Cumhuriyet altını
+          gibi fiziksel altın varlıklarının maliyetini, güncel
+          değerini ve portföy içindeki durumunu takip etmeyi
+          kolaylaştırmayı amaçlayan bir mobil uygulamadır.
+        </p>
+
+        <div class="hero-actions">
+          #features
+            Planlanan özellikler
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="mailto:adem@altiniz.app"
+          >
+            İletişime geç
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">Altın İz</p>
+
+          <h2>
+            Portföy takibini sadeleştiren temel özellikler
+          </h2>
+
+          <p class="section-description">
+            Altın İz, kullanıcıların kendi kayıtlarını anlaşılır
+            ve düzenli bir yapıda takip edebilmesi için
+            tasarlanmaktadır.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">◉</div>
+
+            <h3>Farklı altın türleri</h3>
+
+            <p>
+              Gram, çeyrek, yarım, tam, Cumhuriyet altını ve
+              farklı fiziksel altın türleri için kayıt oluşturma.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">₺</div>
+
+            <h3>Maliyet takibi</h3>
+
+            <p>
+              Alış tutarlarını, miktarları ve işlem tarihlerini
+              tek yerde düzenli biçimde saklama.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">↗</div>
+
+            <h3>Portföy görünümü</h3>
+
+            <p>
+              Kaydedilen varlıkların tahmini güncel değerini ve
+              hesaplanan kâr-zarar durumunu görüntüleme.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">⌁</div>
+
+            <h3>Tür bazlı özetler</h3>
+
+            <p>
+              Portföyde bulunan farklı altın türlerini ayrı ayrı
+              değerlendirebilme.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">◎</div>
+
+            <h3>Android ve iOS</h3>
+
+            <p>
+              Android ve iOS cihazlarda tutarlı deneyim sunacak
+              çapraz platform mobil uygulama.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">✓</div>
+
+            <h3>Kullanıcı kontrolü</h3>
+
+            <p>
+              İşlemleri kaydetmeden önce bilgileri kontrol etme,
+              düzenleme ve onaylama imkânı.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="ai-panel">
+          <div>
+            <p class="section-label">
+              Planlanan yapay zekâ özellikleri
+            </p>
+
+            <h2>
+              Daha doğal ve anlaşılır işlem girişi
+            </h2>
+
+            <p class="section-description">
+              Claude API ile doğal dilde yazılan altın
+              işlemlerinin yapılandırılmış verilere
+              dönüştürülmesi ve kullanıcı onayından sonra
+              kaydedilmesi planlanmaktadır.
+            </p>
+
+            <ul class="ai-list">
+              <li>
+                <span class="check">✓</span>
+
+                <span>
+                  Doğal dilden altın türü, adet, tarih ve
+                  tutar çıkarma
+                </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+
+                <span>
+                  Kullanıcının kendi portföy kayıtlarını
+                  anlaşılır biçimde özetleme
+                </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+
+                <span>
+                  Ortalama maliyet değişikliklerini sade
+                  bir dille açıklama
+                </span>
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+
+                <span>
+                  Kayıt işleminden önce kullanıcı onayı isteme
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <p class="example-label">
+              Örnek doğal dil girişi
+            </p>
+
+            <p class="example-input">
+              “Bugün 2 çeyrek altını toplam 22.000 TL'ye aldım.”
+            </p>
+
+            <div class="example-result">
+              <div class="result-item">
+                <span>İşlem</span>
+                Alış
+              </div>
+
+              <div class="result-item">
+                <span>Altın türü</span>
+                Çeyrek altın
+              </div>
+
+              <div class="result-item">
+                <span>Adet</span>
+                2
+              </div>
+
+              <div class="result-item">
+                <span>Toplam tutar</span>
+                22.000 TL
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="platform-section">
+      <div class="container">
+        <p class="section-label">
+          Teknoloji ve platformlar
+        </p>
+
+        <h2>
+          Mobil öncelikli, çapraz platform yaklaşımı
+        </h2>
+
+        <div class="platform-list">
+          <span class="platform">iOS</span>
+          <span class="platform">Android</span>
+          <span class="platform">React Native</span>
+          <span class="platform">Expo</span>
+          <span class="platform">TypeScript</span>
+          <span class="platform">Supabase</span>
+          <span class="platform">Claude API</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="disclaimer-section">
+      <div class="container">
+        <div class="disclaimer">
+          Altın İz erken geliştirme aşamasındadır. Sayfada
+          belirtilen özellikler ürün planını ifade eder.
+          Altın İz yatırım tavsiyesi, fiyat tahmini veya
+          alım-satım yönlendirmesi sunmayı amaçlamaz.
+          Kullanıcının kendi girdiği verileri takip etmesine
+          ve anlamasına yardımcı olmak üzere tasarlanmaktadır.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>
+        © 2026 Altın İz. Erken geliştirme aşamasında.
+      </p>
+
+      <a href="mailto:adem@altiniz.app">
+        adem@altiniz.app
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
