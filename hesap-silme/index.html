@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hesap ve Veri Silme Talebi — Altın İz</title>
+  <meta name="description" content="Altın İz kullanıcı hesabı ve ilişkili portföy verilerini silme yönergesi ve talep sayfası.">
+  <style>
+    :root {
+      --background: #0b1120;
+      --background-light: #0f172a;
+      --surface: #172033;
+      --surface-light: #1e293b;
+      --gold: #f5c451;
+      --gold-dark: #d9a62e;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --border: rgba(255, 255, 255, 0.1);
+      --danger: #ef4444;
+      --danger-bg: rgba(239, 68, 68, 0.08);
+      --danger-border: rgba(239, 68, 68, 0.25);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(245, 196, 81, 0.12), transparent 32%),
+        linear-gradient(180deg, var(--background-light), var(--background));
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.7;
+    }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container {
+      width: min(1000px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+    .site-header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      font-size: 22px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .brand-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #111827;
+      font-weight: 900;
+      box-shadow: 0 10px 30px rgba(245, 196, 81, 0.2);
+    }
+    .header-email {
+      color: var(--muted);
+      font-size: 15px;
+      text-decoration: none;
+    }
+    .header-email:hover { color: var(--gold); }
+    main {
+      padding: 48px 0 80px;
+    }
+    .card {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(23, 32, 51, 0.9));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      color: var(--gold);
+      font-size: clamp(28px, 4vw, 38px);
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+    }
+    .danger-box {
+      background-color: var(--danger-bg);
+      border: 1px solid var(--danger-border);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+    .danger-box strong { color: var(--danger); font-size: 16px; }
+    h2 {
+      color: var(--text);
+      font-size: 20px;
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+    p, ul, ol {
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-size: 16px;
+    }
+    ul, ol { padding-left: 20px; }
+    li { margin-bottom: 8px; }
+    strong { color: var(--text); }
+    .method-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .method-title {
+      color: var(--gold);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #111827;
+      font-weight: 800;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      margin-top: 10px;
+      box-shadow: 0 10px 25px rgba(245, 196, 81, 0.2);
+      transition: transform 0.2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .footer {
+      margin-top: 48px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 640px) {
+      .card { padding: 24px; }
+      .footer-content { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="/" class="brand">
+        <span class="brand-icon">Aİ</span>
+        <span>Altın İz</span>
+      </a>
+      <a class="header-email" href="mailto:destek@altiniz.app">destek@altiniz.app</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <article class="card">
+        <h1>Hesap ve Veri Silme Talebi</h1>
+        <div class="subtitle">Google Play Data Safety & Apple App Store Kural 5.1.1(v) Uyum Sayfası</div>
+
+        <p>
+          Altın İz kullanıcıları, diledikleri zaman hesaplarının ve uygulamada kayıtlı tüm kişisel verilerinin kalıcı olarak silinmesini talep etme hakkına sahiptir.
+        </p>
+
+        <div class="danger-box">
+          <strong>Dikkat — Geri Alınamaz İşlem:</strong><br>
+          Hesabınız silindiğinde tüm portföy ve alım kayıtlarınız, hesap profiliniz ve tercihleriniz kalıcı olarak imha edilir. Bu işlem kesinlikle geri alınamaz.
+        </div>
+
+        <h2>1. Silinecek Veri Kategorileri</h2>
+        <p>Hesap silme işlemi tamamlandığında aşağıdaki veriler sistemlerimizden tamamen yok edilir:</p>
+        <ul>
+          <li><strong>Kullanıcı Kimliği & Oturum Verisi:</strong> E-posta adresi, şifreli parola, görünen ad ve aktif oturum anahtarları.</li>
+          <li><strong>Portföy Kayıtları:</strong> Eklediğiniz tüm altın türleri, miktarlar, alış tarihleri ve maliyet kayıtları.</li>
+          <li><strong>Kişisel Tercihler:</strong> Tema tercihi ve yasal onay kayıtları.</li>
+        </ul>
+
+        <h2>2. Saklanan Veriler ve Saklama Sebebi</h2>
+        <p>
+          Yasal mevzuat (5651 Sayılı Kanun) ve siber güvenlik yükümlülükleri gereğince; geçmiş güvenlik denetim kayıtları (saldırı girişimleri ve yetkisiz erişim logları) kullanıcının şahsi kimliğinden tamamen arındırılmış (anonimleştirilmiş) biçimde 1 yıl süreyle saklanır ve süre sonunda otomatik imha edilir.
+        </p>
+
+        <h2>3. Hesabınızı Nasıl Silebilirsiniz?</h2>
+
+        <div class="method-card">
+          <div class="method-title">Yöntem A: Uygulama İçerisinden Anında Silme (En Hızlı Yöntem)</div>
+          <ol>
+            <li>Altın İz uygulamasını açın ve giriş yapın.</li>
+            <li>Sağ alttaki <strong>Ayarlar</strong> sekmesine dokunun.</li>
+            <li><strong>Hesap ve Profil</strong> &gt; <strong>Hesabımı Sil</strong> seçeneğine tıklayın.</li>
+            <li>Ekrana gelen uyarıyı okuyup onayladığınızda hesabınız saniyeler içinde kalıcı olarak silinir.</li>
+          </ol>
+        </div>
+
+        <div class="method-card">
+          <div class="method-title">Yöntem B: Web Üzerinden E-posta ile Talep Etme</div>
+          <p>
+            Uygulama telefonunuzda yüklü değilse veya uygulamaya erişemiyorsanız, Altın İz'e kayıt olduğunuz e-posta adresinizden bize talep gönderebilirsiniz:
+          </p>
+          <p>
+            <strong>Konu:</strong> Hesap Silme Talebi<br>
+            <strong>Alıcı:</strong> destek@altiniz.app
+          </p>
+          <a class="btn" href="mailto:destek@altiniz.app?subject=Hesap%20Silme%20Talebi&body=Merhaba%2C%20Alt%C4%B1n%20%C4%B0z%20uygulamas%C4%B1nda%20kay%C4%B1tl%C4%B1%20olan%20hesab%C4%B1m%C4%B1n%20ve%20t%C3%BCm%20portf%C3%B6y%20verilerimin%20kal%C4%B1c%C4%B1%20olarak%20silinmesini%20talep%20ediyorum.">
+            ✉ Hesap Silme E-postası Gönder
+          </a>
+          <p style="margin-top: 14px; font-size: 14px;">
+            <em>Talebiniz güvenlik amacıyla yalnızca kayıtlı e-posta adresinizden gelmesi durumunda işleme alınır ve en geç 48 saat içinde tamamlanarak tarafınıza bilgi verilir.</em>
+          </p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+        <a href="/">Ana Sayfa</a>
+        <a href="/gizlilik">Gizlilik Politikası</a>
+        <a href="/kullanim-kosullari">Kullanım Koşulları</a>
+        <a href="/kvkk">KVKK Metni</a>
+        <a href="/hesap-silme">Hesap Silme Talebi</a>
+      </div>
+      <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+        <span>© 2026 Altın İz.</span>
+        <a href="mailto:destek@altiniz.app">destek@altiniz.app</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
